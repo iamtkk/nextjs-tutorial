@@ -1,6 +1,4 @@
-import test from "node:test";
-
-const url = "https://www.course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-projects";
 
 type Tour = {
   id: string;
@@ -11,7 +9,7 @@ type Tour = {
 };
 
 const fetchTours = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
   const response = await fetch(url);
   const data: Tour[] = await response.json();
   return data;
