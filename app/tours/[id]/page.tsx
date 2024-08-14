@@ -2,7 +2,6 @@ import mapsImg from "@/images/maps.jpg";
 import { Irish_Grover } from "next/font/google";
 import Image from "next/image";
 const url = "https://www.course-api.com/images/tours/tour-1.jpeg";
-console.log("mapsImg : ", mapsImg);
 
 const page = ({ params }: { params: { id: string } }) => {
   return (
