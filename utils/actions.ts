@@ -31,7 +31,7 @@ export const fetchUsers = async (): Promise<User[]> => {
   return users;
 };
 
-const saveUser = async (user: User) => {
+export const saveUser = async (user: User) => {
   const users = await fetchUsers();
   users.push(user);
   await writeFile("users.json", JSON.stringify(users));
@@ -45,4 +45,9 @@ export const deleteUser = async (formData: FormData) => {
   redirect("/actions");
 };
 
-export const removeUser = async (formData: FormData) => {};
+export const removeUser = async (id: string) => {
+  const users = await fetchUsers();
+  const updatedUsers = users.filter((user: User) => user.id !== id);
+  await writeFile("users.json", JSON.stringify(updatedUsers));
+  redirect("/actions");
+};
