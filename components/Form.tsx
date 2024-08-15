@@ -1,6 +1,14 @@
-const createUser = async () => {
-  "use server";
-  console.log("creating user...");
+"use client";
+import { useFormState, useFormStatus } from "react-dom";
+import { createUser } from "@/utils/actions";
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+  return (
+    <button className={btnStyle} type="submit" disabled={pending}>
+      {pending ? "submitting..." : "submit"}
+    </button>
+  );
 };
 
 const Form = () => {
@@ -21,9 +29,7 @@ const Form = () => {
         defaultValue="Taekwan"
         required
       />
-      <button className={btnStyle} type="submit">
-        submit
-      </button>
+      <SubmitButton />
     </form>
   );
 };
